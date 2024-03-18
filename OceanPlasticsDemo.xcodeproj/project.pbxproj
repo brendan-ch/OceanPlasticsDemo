@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2040B5EF2BA8CAE400BFF794 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2040B5EE2BA8CAE400BFF794 /* Event.swift */; };
+		2040B5F12BA8CE0E00BFF794 /* Nonprofit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2040B5F02BA8CE0E00BFF794 /* Nonprofit.swift */; };
 		209081EE2BA8B9B200441F30 /* OceanPlasticsDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209081ED2BA8B9B200441F30 /* OceanPlasticsDemoApp.swift */; };
 		209081F02BA8B9B200441F30 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209081EF2BA8B9B200441F30 /* HomeView.swift */; };
 		209081F42BA8B9B300441F30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 209081F32BA8B9B300441F30 /* Assets.xcassets */; };
@@ -22,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		2040B5EE2BA8CAE400BFF794 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		2040B5F02BA8CE0E00BFF794 /* Nonprofit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nonprofit.swift; sourceTree = "<group>"; };
 		209081EA2BA8B9B200441F30 /* OceanPlasticsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OceanPlasticsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		209081ED2BA8B9B200441F30 /* OceanPlasticsDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OceanPlasticsDemoApp.swift; sourceTree = "<group>"; };
 		209081EF2BA8B9B200441F30 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -50,6 +52,7 @@
 			isa = PBXGroup;
 			children = (
 				2040B5EE2BA8CAE400BFF794 /* Event.swift */,
+				2040B5F02BA8CE0E00BFF794 /* Nonprofit.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -175,6 +178,7 @@
 				209082042BA8BE0400441F30 /* NonprofitView.swift in Sources */,
 				209082082BA8BEB300441F30 /* CardView.swift in Sources */,
 				209082022BA8BD8700441F30 /* AccountView.swift in Sources */,
+				2040B5F12BA8CE0E00BFF794 /* Nonprofit.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

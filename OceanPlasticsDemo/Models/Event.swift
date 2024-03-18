@@ -18,7 +18,7 @@ final class Event {
     var imageAssetName: String
     
     /// The nonprofit that the event belongs to.
-//    var nonprofit: Nonprofit?
+    var nonprofit: Nonprofit?
     
     /// The date of the event.
     var date: Date
