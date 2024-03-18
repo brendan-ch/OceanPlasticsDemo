@@ -19,11 +19,10 @@ struct TabbedView: View {
                 .tabItem {
                     Label("Events", systemImage: "calendar.day.timeline.left")
                 }
-//            AccountView() {
-//                .tabItem {
-//                    Label("Account", systemImage: "person.crop.circle")
-//                }
-//            }
+            AccountView()
+                .tabItem {
+                    Label("Account", systemImage: "person.crop.circle")
+                }
                 
         }
     }
