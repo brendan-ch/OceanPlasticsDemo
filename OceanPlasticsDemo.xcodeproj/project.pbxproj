@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		209081EE2BA8B9B200441F30 /* OceanPlasticsDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209081ED2BA8B9B200441F30 /* OceanPlasticsDemoApp.swift */; };
 		209081F02BA8B9B200441F30 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209081EF2BA8B9B200441F30 /* HomeView.swift */; };
-		209081F22BA8B9B200441F30 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209081F12BA8B9B200441F30 /* Item.swift */; };
 		209081F42BA8B9B300441F30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 209081F32BA8B9B300441F30 /* Assets.xcassets */; };
 		209081F72BA8B9B300441F30 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 209081F62BA8B9B300441F30 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -18,7 +17,6 @@
 		209081EA2BA8B9B200441F30 /* OceanPlasticsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OceanPlasticsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		209081ED2BA8B9B200441F30 /* OceanPlasticsDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OceanPlasticsDemoApp.swift; sourceTree = "<group>"; };
 		209081EF2BA8B9B200441F30 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		209081F12BA8B9B200441F30 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		209081F32BA8B9B300441F30 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		209081F62BA8B9B300441F30 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -55,7 +53,6 @@
 			children = (
 				209081ED2BA8B9B200441F30 /* OceanPlasticsDemoApp.swift */,
 				209081EF2BA8B9B200441F30 /* HomeView.swift */,
-				209081F12BA8B9B200441F30 /* Item.swift */,
 				209081F32BA8B9B300441F30 /* Assets.xcassets */,
 				209081F52BA8B9B300441F30 /* Preview Content */,
 			);
@@ -141,7 +138,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				209081F02BA8B9B200441F30 /* HomeView.swift in Sources */,
-				209081F22BA8B9B200441F30 /* Item.swift in Sources */,
 				209081EE2BA8B9B200441F30 /* OceanPlasticsDemoApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
