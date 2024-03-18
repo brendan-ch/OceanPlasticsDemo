@@ -23,11 +23,21 @@ struct CardView<Content: View>: View {
 
     var body: some View {
         VStack {
+            // MARK: Image content passed from parent view
             imageContent
-            Text(caption)
-            Text(title)
-            Text(description)
+            // MARK: Text and drill-in
+            HStack {
+                // MARK: Text
+                VStack {
+                    Text(caption)
+                    Text(title)
+                    Text(description)
+                }
+                // MARK: Drill-in
+                Image(systemName: "chevron.right")
+            }
         }
+        .padding(16)
     }
 }
 
