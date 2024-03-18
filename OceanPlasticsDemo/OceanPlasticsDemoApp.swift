@@ -12,7 +12,7 @@ import SwiftData
 struct OceanPlasticsDemoApp: App {
     var body: some Scene {
         WindowGroup {
-            HomeView()
+            TabbedView()
         }
     }
 }
