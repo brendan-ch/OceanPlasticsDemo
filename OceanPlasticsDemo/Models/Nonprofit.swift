@@ -11,7 +11,7 @@ import SwiftUI
 
 /// Represents an outside link to some external source,
 /// such as a nonprofit's website, social media page, or email.
-struct ExternalResources: Codable {
+struct ExternalResource: Codable {
     /// Name of the external link to display to the user.
     var name: String
     
@@ -40,12 +40,12 @@ class Nonprofit {
     /// Array of external resources belonging to the nonprofit, each of which
     /// takes the user outside the app.
     /// Examples include the nonprofit's website, social media pages, etc.
-    var externalResources: [ExternalResources]
+    var externalResources: [ExternalResource]
     
     /// The nonprofit's mailing address.
     var mailingAddress: String
     
-    init(events: [Event] = [Event](), name: String, following: Bool, about: String, externalResources: [ExternalResources], mailingAddress: String) {
+    init(events: [Event] = [Event](), name: String, following: Bool, about: String, externalResources: [ExternalResource], mailingAddress: String) {
         self.events = events
         self.name = name
         self.following = following
