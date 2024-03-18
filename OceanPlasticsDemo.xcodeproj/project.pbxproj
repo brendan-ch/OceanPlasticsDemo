@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2040B5EF2BA8CAE400BFF794 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2040B5EE2BA8CAE400BFF794 /* Event.swift */; };
 		209081EE2BA8B9B200441F30 /* OceanPlasticsDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209081ED2BA8B9B200441F30 /* OceanPlasticsDemoApp.swift */; };
 		209081F02BA8B9B200441F30 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209081EF2BA8B9B200441F30 /* HomeView.swift */; };
 		209081F42BA8B9B300441F30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 209081F32BA8B9B300441F30 /* Assets.xcassets */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2040B5EE2BA8CAE400BFF794 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		209081EA2BA8B9B200441F30 /* OceanPlasticsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OceanPlasticsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		209081ED2BA8B9B200441F30 /* OceanPlasticsDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OceanPlasticsDemoApp.swift; sourceTree = "<group>"; };
 		209081EF2BA8B9B200441F30 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -44,6 +46,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2040B5ED2BA8CAD100BFF794 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2040B5EE2BA8CAE400BFF794 /* Event.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		209081E12BA8B9B200441F30 = {
 			isa = PBXGroup;
 			children = (
@@ -63,6 +73,7 @@
 		209081EC2BA8B9B200441F30 /* OceanPlasticsDemo */ = {
 			isa = PBXGroup;
 			children = (
+				2040B5ED2BA8CAD100BFF794 /* Models */,
 				209081ED2BA8B9B200441F30 /* OceanPlasticsDemoApp.swift */,
 				209081EF2BA8B9B200441F30 /* HomeView.swift */,
 				209081F32BA8B9B300441F30 /* Assets.xcassets */,
@@ -156,6 +167,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				209081F02BA8B9B200441F30 /* HomeView.swift in Sources */,
+				2040B5EF2BA8CAE400BFF794 /* Event.swift in Sources */,
 				209082062BA8BE3800441F30 /* EventView.swift in Sources */,
 				209082002BA8BD4400441F30 /* UpcomingEventsView.swift in Sources */,
 				209081FE2BA8BBEC00441F30 /* TabbedView.swift in Sources */,
