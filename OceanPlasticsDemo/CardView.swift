@@ -26,16 +26,18 @@ struct CardView<Content: View>: View {
             // MARK: Image content passed from parent view
             imageContent
             // MARK: Text and drill-in
-            HStack {
+            HStack() {
                 // MARK: Text
-                VStack {
+                VStack(alignment: .leading) {
                     Text(caption)
                     Text(title)
                     Text(description)
                 }
+                Spacer()
                 // MARK: Drill-in
                 Image(systemName: "chevron.right")
             }
+            .frame(maxWidth: .infinity)
         }
         .padding(16)
     }
@@ -45,6 +47,8 @@ struct CardView<Content: View>: View {
     CardView(caption: "Surfrider Foundation", title: "Dockweiler Beach Cleanup", description: "April 14th, 2024") {
         Image("dockweiler")
             .resizable()
+            .aspectRatio(contentMode: .fit)
+            .clipped()
     }
 }
 
