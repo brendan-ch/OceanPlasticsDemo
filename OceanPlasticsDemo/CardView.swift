@@ -22,20 +22,24 @@ struct CardView<Content: View>: View {
     }
 
     var body: some View {
-        VStack {
+        VStack(spacing: 8) {
             // MARK: Image content passed from parent view
             imageContent
             // MARK: Text and drill-in
             HStack() {
                 // MARK: Text
                 VStack(alignment: .leading) {
-                    Text(caption)
+                    Text(caption.uppercased())
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
                     Text(title)
+                        .font(.headline)
                     Text(description)
                 }
                 Spacer()
                 // MARK: Drill-in
                 Image(systemName: "chevron.right")
+                    .foregroundStyle(.secondary)
             }
             .frame(maxWidth: .infinity)
         }
