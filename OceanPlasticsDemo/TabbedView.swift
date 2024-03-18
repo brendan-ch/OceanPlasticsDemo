@@ -15,11 +15,10 @@ struct TabbedView: View {
                 .tabItem {
                     Label("Home", systemImage: "house")
                 }
-//            UpcomingEventsView() {
-//                .tabItem {
-//                    Label("Events", systemImage: "calendar.day.timeline.left")
-//                }
-//            }
+            UpcomingEventsView()
+                .tabItem {
+                    Label("Events", systemImage: "calendar.day.timeline.left")
+                }
 //            AccountView() {
 //                .tabItem {
 //                    Label("Account", systemImage: "person.crop.circle")

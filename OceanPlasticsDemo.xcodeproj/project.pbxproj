@@ -12,6 +12,7 @@
 		209081F42BA8B9B300441F30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 209081F32BA8B9B300441F30 /* Assets.xcassets */; };
 		209081F72BA8B9B300441F30 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 209081F62BA8B9B300441F30 /* Preview Assets.xcassets */; };
 		209081FE2BA8BBEC00441F30 /* TabbedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209081FD2BA8BBEC00441F30 /* TabbedView.swift */; };
+		209082002BA8BD4400441F30 /* UpcomingEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209081FF2BA8BD4400441F30 /* UpcomingEventsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		209081F32BA8B9B300441F30 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		209081F62BA8B9B300441F30 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		209081FD2BA8BBEC00441F30 /* TabbedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbedView.swift; sourceTree = "<group>"; };
+		209081FF2BA8BD4400441F30 /* UpcomingEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingEventsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 				209081F32BA8B9B300441F30 /* Assets.xcassets */,
 				209081F52BA8B9B300441F30 /* Preview Content */,
 				209081FD2BA8BBEC00441F30 /* TabbedView.swift */,
+				209081FF2BA8BD4400441F30 /* UpcomingEventsView.swift */,
 			);
 			path = OceanPlasticsDemo;
 			sourceTree = "<group>";
@@ -141,6 +144,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				209081F02BA8B9B200441F30 /* HomeView.swift in Sources */,
+				209082002BA8BD4400441F30 /* UpcomingEventsView.swift in Sources */,
 				209081FE2BA8BBEC00441F30 /* TabbedView.swift in Sources */,
 				209081EE2BA8B9B200441F30 /* OceanPlasticsDemoApp.swift in Sources */,
 			);
