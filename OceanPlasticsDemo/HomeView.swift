@@ -37,7 +37,7 @@ struct HomeView: View {
                                 EmptyView()
                             }
                             .opacity(0.0)
-                            CardView(caption: event.nonprofit?.name ?? "", title: event.name, description: event.date.description) {
+                            CardView(caption: event.nonprofit?.name ?? "", title: event.name, description: event.date.formatted()) {
                                 Image(event.imageAssetName)
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
