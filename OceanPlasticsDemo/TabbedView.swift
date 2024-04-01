@@ -12,18 +12,30 @@ import SwiftData
 struct TabbedView: View {
     var body: some View {
         TabView {
-            HomeView()
+            NavigationStack {
+                HomeView()
+            }
                 .tabItem {
                     Label("Home", systemImage: "house")
                 }
-            UpcomingEventsView()
+                .navigationTitle("Home")
+            
+            
+            NavigationStack {
+                UpcomingEventsView()
+            }
                 .tabItem {
                     Label("Events", systemImage: "calendar.day.timeline.left")
                 }
-            AccountView()
+                .navigationTitle("Events")
+            
+            NavigationStack {
+                AccountView()
+            }
                 .tabItem {
                     Label("Account", systemImage: "person.crop.circle")
                 }
+                .navigationTitle("Account")
                 
         }
     }
