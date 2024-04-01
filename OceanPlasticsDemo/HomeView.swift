@@ -26,6 +26,18 @@ struct HomeView: View {
                         }
                     }
                 }
+                
+                Section(header: Text("Upcoming events")) {
+                    ForEach(events) { event in
+                        NavigationLink {
+                            EventView()
+                        } label: {
+                            Text(event.name)
+                        }
+                    }
+                    
+                    events.count == 0 ? Text("No upcoming events to display.") : nil
+                }
             }
             .listStyle(.plain)
         }
