@@ -18,7 +18,6 @@ struct TabbedView: View {
                 .tabItem {
                     Label("Home", systemImage: "house")
                 }
-                .navigationTitle("Home")
             
             
             NavigationStack {
@@ -27,7 +26,6 @@ struct TabbedView: View {
                 .tabItem {
                     Label("Events", systemImage: "calendar.day.timeline.left")
                 }
-                .navigationTitle("Events")
             
             NavigationStack {
                 AccountView()
@@ -35,7 +33,6 @@ struct TabbedView: View {
                 .tabItem {
                     Label("Account", systemImage: "person.crop.circle")
                 }
-                .navigationTitle("Account")
                 
         }
     }
