@@ -9,7 +9,9 @@ import SwiftUI
 import SwiftData
 
 struct HomeView: View {
-    @Query var nonprofits: [Nonprofit]
+    @Query(filter: #Predicate<Nonprofit> { nonprofit in
+        nonprofit.following
+    }) var nonprofits: [Nonprofit]
     @Query var events: [Event]
     
     @State private var searchText = ""
