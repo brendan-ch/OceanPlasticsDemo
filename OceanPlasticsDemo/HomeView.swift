@@ -40,7 +40,9 @@ struct HomeView: View {
                             CardView(caption: event.nonprofit?.name ?? "", title: event.name, description: event.date.formatted()) {
                                 Image(event.imageAssetName)
                                     .resizable()
-                                    .aspectRatio(contentMode: .fit)
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(height: 200)
+                                    .clipShape(RoundedRectangle(cornerRadius: 4.0))
                                     .clipped()
                             }
                         }
