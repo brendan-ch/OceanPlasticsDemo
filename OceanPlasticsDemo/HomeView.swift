@@ -9,6 +9,9 @@ import SwiftUI
 import SwiftData
 
 struct HomeView: View {
+    @Query var nonprofits: [Nonprofit]
+    @Query var events: [Event]
+    
     var body: some View {
         Text("Home View")
     }
@@ -16,4 +19,5 @@ struct HomeView: View {
 
 #Preview {
     HomeView()
+        .modelContainer(PreviewDataController.previewContainer)
 }
