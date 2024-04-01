@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		20408A0E2BBB55F900E74F83 /* PreviewDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20408A0D2BBB55F900E74F83 /* PreviewDataController.swift */; };
 		2040B5EF2BA8CAE400BFF794 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2040B5EE2BA8CAE400BFF794 /* Event.swift */; };
 		2040B5F12BA8CE0E00BFF794 /* Nonprofit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2040B5F02BA8CE0E00BFF794 /* Nonprofit.swift */; };
 		209081EE2BA8B9B200441F30 /* OceanPlasticsDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209081ED2BA8B9B200441F30 /* OceanPlasticsDemoApp.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		20408A0D2BBB55F900E74F83 /* PreviewDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewDataController.swift; sourceTree = "<group>"; };
 		2040B5EE2BA8CAE400BFF794 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		2040B5F02BA8CE0E00BFF794 /* Nonprofit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nonprofit.swift; sourceTree = "<group>"; };
 		209081EA2BA8B9B200441F30 /* OceanPlasticsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OceanPlasticsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -87,6 +89,7 @@
 				209082032BA8BE0400441F30 /* NonprofitView.swift */,
 				209082052BA8BE3800441F30 /* EventView.swift */,
 				209082072BA8BEB300441F30 /* CardView.swift */,
+				20408A0D2BBB55F900E74F83 /* PreviewDataController.swift */,
 			);
 			path = OceanPlasticsDemo;
 			sourceTree = "<group>";
@@ -170,6 +173,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				209081F02BA8B9B200441F30 /* HomeView.swift in Sources */,
+				20408A0E2BBB55F900E74F83 /* PreviewDataController.swift in Sources */,
 				2040B5EF2BA8CAE400BFF794 /* Event.swift in Sources */,
 				209082062BA8BE3800441F30 /* EventView.swift in Sources */,
 				209082002BA8BD4400441F30 /* UpcomingEventsView.swift in Sources */,
