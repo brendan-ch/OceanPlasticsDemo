@@ -15,8 +15,19 @@ struct HomeView: View {
     @State private var searchText = ""
     
     var body: some View {
-        ScrollView {
-            Text("Searching for \(searchText)")
+        VStack {
+            List {
+                Section(header: Text("Following")) {
+                    ForEach(nonprofits) {nonprofit in
+                        NavigationLink {
+                            NonprofitView()
+                        } label: {
+                            Text(nonprofit.name)
+                        }
+                    }
+                }
+            }
+            .listStyle(.plain)
         }
         .navigationTitle("Home")
         .navigationBarTitleDisplayMode(.large)
