@@ -8,9 +8,9 @@
 import Foundation
 import SwiftData
 
-/// Singleton object for creating preview data in SwiftUI previews.
+/// Singleton object for creating placeholder data in SwiftUI previews and the app.
 @MainActor
-class PreviewDataController {
+class PlaceholderDataController {
     static let previewContainer: ModelContainer = {
         let schema = Schema([
             Event.self,

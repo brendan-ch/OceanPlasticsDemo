@@ -40,5 +40,5 @@ struct TabbedView: View {
 
 #Preview {
     return TabbedView()
-        .modelContainer(PreviewDataController.previewContainer)
+        .modelContainer(PlaceholderDataController.previewContainer)
 }

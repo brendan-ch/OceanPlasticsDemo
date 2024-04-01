@@ -49,5 +49,5 @@ struct HomeView: View {
 
 #Preview {
     HomeView()
-        .modelContainer(PreviewDataController.previewContainer)
+        .modelContainer(PlaceholderDataController.previewContainer)
 }
