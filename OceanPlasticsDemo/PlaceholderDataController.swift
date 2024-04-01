@@ -21,8 +21,12 @@ class PlaceholderDataController {
         
         let container = try! ModelContainer(for: schema, configurations: [options])
         
-        container.mainContext.insert(Nonprofit(name: "Surfrider Foundation", following: true, about: "The Surfrider Foundation USA is a U.S. 501 grassroots non-profit environmental organization that works to protect and preserve the world's oceans, waves and beaches. It focuses on water quality, beach access, beach and surf spot preservation, and sustaining marine and coastal ecosystems. (Wikipedia)", externalResources: [], mailingAddress: "P.O. Box 73550, San Clemente, CA 92673"))
+        insertPlaceholderData(container: container)
         
         return container
     }()
+    
+    static func insertPlaceholderData(container: ModelContainer) {
+        container.mainContext.insert(Nonprofit(name: "Surfrider Foundation", following: true, about: "The Surfrider Foundation USA is a U.S. 501 grassroots non-profit environmental organization that works to protect and preserve the world's oceans, waves and beaches. It focuses on water quality, beach access, beach and surf spot preservation, and sustaining marine and coastal ecosystems. (Wikipedia)", externalResources: [], mailingAddress: "P.O. Box 73550, San Clemente, CA 92673"))
+    }
 }
