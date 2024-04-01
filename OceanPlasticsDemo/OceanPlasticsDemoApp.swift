@@ -22,6 +22,10 @@ struct OceanPlasticsDemoApp: App {
         return container
     }()
     
+    init() {
+        PlaceholderDataController.insertPlaceholderData(container: sharedModelContainer)
+    }
+    
     var body: some Scene {
         WindowGroup {
             TabbedView()
