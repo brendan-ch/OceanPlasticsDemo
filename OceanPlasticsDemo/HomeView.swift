@@ -29,12 +29,25 @@ struct HomeView: View {
                 
                 Section(header: Text("Upcoming events")) {
                     ForEach(events) { event in
-                        NavigationLink {
-                            EventView()
-                        } label: {
-                            Text(event.name)
+                        // Hack to hide the disclosure indicator displayed by NavigationLink by default
+                        ZStack {
+                            NavigationLink {
+                                EventView()
+                            } label: {
+                                EmptyView()
+                            }
+                            .opacity(0.0)
+                            CardView(caption: event.nonprofit?.name ?? "", title: event.name, description: event.date.description) {
+                                Image(event.imageAssetName)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .clipped()
+                            }
                         }
+                        .listRowInsets(EdgeInsets())
                     }
+                    .listRowSeparator(.hidden)
+
                     
                     events.count == 0 ? Text("No upcoming events to display.") : nil
                 }
