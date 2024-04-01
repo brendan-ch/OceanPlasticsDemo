@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftData
+import CoreLocation
 
 /// Singleton object for creating placeholder data in SwiftUI previews and the app.
 @MainActor
@@ -27,6 +28,16 @@ class PlaceholderDataController {
     }()
     
     static func insertPlaceholderData(container: ModelContainer) {
-        container.mainContext.insert(Nonprofit(name: "Surfrider Foundation", following: true, about: "The Surfrider Foundation USA is a U.S. 501 grassroots non-profit environmental organization that works to protect and preserve the world's oceans, waves and beaches. It focuses on water quality, beach access, beach and surf spot preservation, and sustaining marine and coastal ecosystems. (Wikipedia)", externalResources: [], mailingAddress: "P.O. Box 73550, San Clemente, CA 92673"))
+        try! container.mainContext.delete(model: Nonprofit.self)
+        try! container.mainContext.delete(model: Event.self)
+        
+        let surfrider = Nonprofit(name: "Surfrider Foundation", following: true, about: "The Surfrider Foundation USA is a U.S. 501 grassroots non-profit environmental organization that works to protect and preserve the world's oceans, waves and beaches. It focuses on water quality, beach access, beach and surf spot preservation, and sustaining marine and coastal ecosystems. (Wikipedia)", externalResources: [], mailingAddress: "P.O. Box 73550, San Clemente, CA 92673")
+        
+        container.mainContext.insert(surfrider)
+        
+        let dockweiler = Event(name: "Dockweiler Beach Cleanup", imageAssetName: "dockweiler", date: Date.now, externalSignupLink: URL(string: "https://surfrider.com")!, bookmarked: false, about: "Join us at one of the largest annual beach cleanups in Southern California! This event is located at Dockweiler Beach, which covers over 3.7 miles and 288 acres of beach, and is situated right next to Los Angeles International Airport. Food and amenities will be provided!", latitude: nil, longitude: nil)
+        dockweiler.nonprofit = surfrider
+        
+        container.mainContext.insert(dockweiler)
     }
 }
