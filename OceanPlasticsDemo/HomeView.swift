@@ -12,8 +12,15 @@ struct HomeView: View {
     @Query var nonprofits: [Nonprofit]
     @Query var events: [Event]
     
+    @State private var searchText = ""
+    
     var body: some View {
-        Text("Home View")
+        ScrollView {
+            Text("Searching for \(searchText)")
+        }
+        .navigationTitle("Home")
+        .navigationBarTitleDisplayMode(.large)
+        .searchable(text: $searchText, prompt: "Search for nonprofits and events...")
     }
 }
 
