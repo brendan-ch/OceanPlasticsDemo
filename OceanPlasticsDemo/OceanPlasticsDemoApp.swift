@@ -16,17 +16,10 @@ struct OceanPlasticsDemoApp: App {
             Nonprofit.self,
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
-        var modelContainer: ModelContainer;
 
-        do {
-            modelContainer = try ModelContainer(for: schema, configurations: [modelConfiguration])
-        } catch {
-            fatalError("Could not create ModelContainer: \(error)")
-        }
-        
-        // TO-DO: insert some starter data
-        
-        return modelContainer
+        let container = try! ModelContainer(for: schema, configurations: modelConfiguration)
+    
+        return container
     }()
     
     var body: some Scene {
