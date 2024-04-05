@@ -16,17 +16,58 @@ struct NonprofitView: View {
     
     var body: some View {
         ScrollView {
-            VStack {
-                ZStack(alignment: .bottomTrailing) {
-                    if let imageName = nonprofit.imageAssetName {
-                        Image(imageName)
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(height: 240)
-                    }
+            VStack(alignment: .leading) {
+                if let imageName = nonprofit.imageAssetName {
+                    Image(imageName)
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(height: 240)
                 }
                 
-                Text(nonprofit.name)
+                VStack(alignment: .leading, spacing: 16) {
+                    // MARK: - Title
+                    Text(nonprofit.name)
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                    
+                    Button(action: {}) {
+                        HStack {
+                            Spacer()
+                            Image(systemName: "multiply")
+                            Text("Unfollow")
+                                .fontWeight(.medium)
+                            
+                            Spacer()
+                        }
+                    }
+                    .buttonStyle(.bordered)
+                    .controlSize(.large)
+                    .frame(width: .infinity)
+                    
+                    Text(nonprofit.about)
+                    
+                    // MARK: - Contact info
+                    
+                    VStack(alignment: .leading, spacing: 0) {
+                        Text("Mailing address")
+                            .font(.headline)
+                        Text(nonprofit.mailingAddress)
+                    }
+                    
+                    VStack(alignment: .leading) {
+                        ForEach(nonprofit.externalResources, id: \.link) { externalResource in
+                            Button(action: {}) {
+                                HStack {
+                                    Image(systemName: externalResource.systemImageName)
+                                    Text(externalResource.name)
+                                }
+                            }
+                            .buttonStyle(.bordered)
+                        }
+                    }
+                }
+                .padding()
+                .frame(width: .infinity)
             }
         }
         .toolbarBackground(.hidden)
@@ -38,7 +79,11 @@ struct NonprofitView: View {
     let config = ModelConfiguration(isStoredInMemoryOnly: true)
     let container = try! ModelContainer(for: Nonprofit.self, configurations: config)
     
-    let nonprofit = Nonprofit(name: "Test Nonprofit", following: true, about: "About this nonprofits", externalResources: [], mailingAddress: "1 University Drive, Orange, CA", imageAssetName: "surfrider")
+    let externalResources: [ExternalResource] = [
+        ExternalResource(name: "Website", systemImageName: "arrow.up.right", link: URL(string: "https://surfrider.com")!)
+    ]
+    
+    let nonprofit = Nonprofit(name: "Test Nonprofit", following: true, about: "The Surfrider Foundation USA is a U.S. 501 grassroots non-profit environmental organization that works to protect and preserve the world's oceans, waves and beaches. It focuses on water quality, beach access, beach and surf spot preservation, and sustaining marine and coastal ecosystems. (Wikipedia)", externalResources: externalResources, mailingAddress: "1 University Drive, Orange, CA", imageAssetName: "surfrider")
     
     return NonprofitView(nonprofit: nonprofit)
         .modelContainer(container)
