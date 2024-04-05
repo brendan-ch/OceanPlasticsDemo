@@ -30,19 +30,27 @@ struct NonprofitView: View {
                         .font(.largeTitle)
                         .fontWeight(.bold)
                     
-                    Button(action: {}) {
+                    Button(action: {
+                        nonprofit.following.toggle()
+                    }) {
                         HStack {
                             Spacer()
-                            Image(systemName: "multiply")
-                            Text("Unfollow")
-                                .fontWeight(.medium)
+                            
+                            if !nonprofit.following {
+                                Image(systemName: "plus")
+                                Text("Follow")
+                                    .fontWeight(.medium)
+                            } else {
+                                Image(systemName: "multiply")
+                                Text("Unfollow")
+                                    .fontWeight(.medium)
+                            }
                             
                             Spacer()
                         }
                     }
                     .buttonStyle(.bordered)
                     .controlSize(.large)
-                    .frame(width: .infinity)
                     
                     Text(nonprofit.about)
                     
@@ -67,7 +75,6 @@ struct NonprofitView: View {
                     }
                 }
                 .padding()
-                .frame(width: .infinity)
             }
         }
         .toolbarBackground(.hidden)
