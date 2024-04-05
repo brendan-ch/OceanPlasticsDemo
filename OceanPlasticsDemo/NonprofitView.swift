@@ -64,7 +64,9 @@ struct NonprofitView: View {
                     
                     VStack(alignment: .leading) {
                         ForEach(nonprofit.externalResources, id: \.link) { externalResource in
-                            Button(action: {}) {
+                            Button(action: {
+                                UIApplication.shared.open(externalResource.link)
+                            }) {
                                 HStack {
                                     Image(systemName: externalResource.systemImageName)
                                     Text(externalResource.name)
