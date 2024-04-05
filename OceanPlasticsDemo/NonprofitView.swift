@@ -7,13 +7,32 @@
 
 import Foundation
 import SwiftUI
+import SwiftData
 
 struct NonprofitView: View {
+    @Environment(\.modelContext) var modelContext
+    
+    let nonprofit: Nonprofit
+    
     var body: some View {
-        Text("Nonprofit View")
+        ScrollView {
+            VStack {
+                ZStack(alignment: .bottomTrailing) {
+                    
+                }
+                
+                Text(nonprofit.name)
+            }
+        }
     }
 }
 
 #Preview {
-    NonprofitView()
+    let config = ModelConfiguration(isStoredInMemoryOnly: true)
+    let container = try! ModelContainer(for: Nonprofit.self, configurations: config)
+    
+    let nonprofit = Nonprofit(name: "Test Nonprofit", following: true, about: "About this nonprofits", externalResources: [], mailingAddress: "1 University Drive, Orange, CA")
+    
+    return NonprofitView(nonprofit: nonprofit)
+        .modelContainer(container)
 }
