@@ -18,12 +18,19 @@ struct NonprofitView: View {
         ScrollView {
             VStack {
                 ZStack(alignment: .bottomTrailing) {
-                    
+                    if let imageName = nonprofit.imageAssetName {
+                        Image(imageName)
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(height: 240)
+                    }
                 }
                 
                 Text(nonprofit.name)
             }
         }
+        .toolbarBackground(.hidden)
+        .ignoresSafeArea()
     }
 }
 
@@ -31,7 +38,7 @@ struct NonprofitView: View {
     let config = ModelConfiguration(isStoredInMemoryOnly: true)
     let container = try! ModelContainer(for: Nonprofit.self, configurations: config)
     
-    let nonprofit = Nonprofit(name: "Test Nonprofit", following: true, about: "About this nonprofits", externalResources: [], mailingAddress: "1 University Drive, Orange, CA")
+    let nonprofit = Nonprofit(name: "Test Nonprofit", following: true, about: "About this nonprofits", externalResources: [], mailingAddress: "1 University Drive, Orange, CA", imageAssetName: "surfrider")
     
     return NonprofitView(nonprofit: nonprofit)
         .modelContainer(container)
