@@ -63,6 +63,16 @@ struct NonprofitView: View {
                     }
                     
                     VStack(alignment: .leading) {
+                        Button(action: {
+                            UIPasteboard.general.string = nonprofit.mailingAddress
+                        }) {
+                            HStack {
+                                Image(systemName: "doc.on.doc.fill")
+                                Text("Copy mailing address")
+                            }
+                        }
+                        .buttonStyle(.bordered)
+                        
                         ForEach(nonprofit.externalResources, id: \.link) { externalResource in
                             Button(action: {
                                 UIApplication.shared.open(externalResource.link)
