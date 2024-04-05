@@ -32,7 +32,11 @@ class PlaceholderDataController {
         try! container.mainContext.delete(model: Nonprofit.self)
         try! container.mainContext.delete(model: Event.self)
         
-        let surfrider = Nonprofit(name: "Surfrider Foundation", following: true, about: "The Surfrider Foundation USA is a U.S. 501 grassroots non-profit environmental organization that works to protect and preserve the world's oceans, waves and beaches. It focuses on water quality, beach access, beach and surf spot preservation, and sustaining marine and coastal ecosystems. (Wikipedia)", externalResources: [], mailingAddress: "P.O. Box 73550, San Clemente, CA 92673", imageAssetName: "surfrider")
+        let externalResources: [ExternalResource] = [
+            ExternalResource(name: "Website", systemImageName: "arrow.up.right", link: URL(string: "https://surfrider.com")!)
+        ]
+        
+        let surfrider = Nonprofit(name: "Surfrider Foundation", following: true, about: "The Surfrider Foundation USA is a U.S. 501 grassroots non-profit environmental organization that works to protect and preserve the world's oceans, waves and beaches. It focuses on water quality, beach access, beach and surf spot preservation, and sustaining marine and coastal ecosystems. (Wikipedia)", externalResources: externalResources, mailingAddress: "P.O. Box 73550, San Clemente, CA 92673", imageAssetName: "surfrider")
         
         container.mainContext.insert(surfrider)
         
