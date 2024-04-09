@@ -45,6 +45,9 @@ class Nonprofit {
     /// The nonprofit's mailing address.
     var mailingAddress: String
     
+    /// A preview image to display with the nonprofit, included in Assets.
+    var imageAssetName: String?
+    
     init(events: [Event] = [Event](), name: String, following: Bool, about: String, externalResources: [ExternalResource], mailingAddress: String) {
         self.events = events
         self.name = name
@@ -52,5 +55,15 @@ class Nonprofit {
         self.about = about
         self.externalResources = externalResources
         self.mailingAddress = mailingAddress
+    }
+    
+    init(events: [Event] = [Event](), name: String, following: Bool, about: String, externalResources: [ExternalResource], mailingAddress: String, imageAssetName: String) {        
+        self.events = events
+        self.name = name
+        self.following = following
+        self.about = about
+        self.externalResources = externalResources
+        self.mailingAddress = mailingAddress
+        self.imageAssetName = imageAssetName
     }
 }

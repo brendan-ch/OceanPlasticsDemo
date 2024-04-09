@@ -22,7 +22,7 @@ struct HomeView: View {
                 Section(header: Text("Following")) {
                     ForEach(nonprofits) {nonprofit in
                         NavigationLink {
-                            NonprofitView()
+                            NonprofitView(nonprofit: nonprofit)
                         } label: {
                             Text(nonprofit.name)
                         }
