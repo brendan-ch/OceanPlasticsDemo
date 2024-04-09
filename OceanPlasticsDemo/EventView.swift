@@ -46,6 +46,17 @@ struct EventView: View {
                         .tint(.primary)
                     }
                     
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text("On".uppercased())
+                                .font(.caption)
+                                .fontWeight(.medium)
+                                .foregroundStyle(.secondary)
+                            Text(event.date.formatted())
+                        }
+                        Spacer()
+                    }
+                    
                     Button(action: {
                         UIApplication.shared.open(event.externalSignupLink)
                     }) {
