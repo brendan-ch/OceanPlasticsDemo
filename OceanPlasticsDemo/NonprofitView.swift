@@ -126,7 +126,7 @@ struct NonprofitView: View {
                     // Hack to hide the disclosure indicator displayed by NavigationLink by default
                     ZStack {
                         NavigationLink {
-                            EventView()
+                            EventView(event: event)
                         } label: {
                             CardView(caption: event.nonprofit?.name ?? "", title: event.name, description: event.date.formatted()) {
                                 Image(event.imageAssetName)

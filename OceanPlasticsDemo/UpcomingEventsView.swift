@@ -17,7 +17,7 @@ struct UpcomingEventsView: View {
             ForEach(events) { event in
                 ZStack {
                     NavigationLink {
-                        EventView()
+                        EventView(event: event)
                     } label: {
                         EmptyView()
                     }

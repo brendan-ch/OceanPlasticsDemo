@@ -34,7 +34,7 @@ struct HomeView: View {
                         // Hack to hide the disclosure indicator displayed by NavigationLink by default
                         ZStack {
                             NavigationLink {
-                                EventView()
+                                EventView(event: event)
                             } label: {
                                 EmptyView()
                             }
