@@ -12,7 +12,35 @@ struct EventView: View {
     var event: Event
     
     var body: some View {
-        Text("Event View")
+        ScrollView {
+            VStack(alignment: .leading) {
+                // MARK: - Image and title
+                Image(event.imageAssetName)
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(height: 240)
+                
+                VStack(alignment: .leading, spacing: 16) {
+                    Text(event.name)
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                    
+                    Button(action: {
+                        UIApplication.shared.open(event.externalSignupLink)
+                    }) {
+                        HStack {
+                            Image(systemName: "arrow.up.right")
+                            
+                            if let baseURL = event.externalSignupLink.baseURL {
+                                Text("Sign up on \(baseURL.absoluteString)")
+                            } else {
+                                Text("Sign up")
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
