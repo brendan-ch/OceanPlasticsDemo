@@ -21,6 +21,7 @@ struct NonprofitView: View {
         self.nonprofit = nonprofit
         let id = nonprofit.persistentModelID
         
+        // See https://stackoverflow.com/questions/77039981/swiftdata-query-with-predicate-on-relationship-model
         _events = Query(filter: #Predicate<Event> { event in
             event.nonprofit?.persistentModelID == id
         }, sort: \Event.date)
