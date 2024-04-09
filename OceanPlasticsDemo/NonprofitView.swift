@@ -30,6 +30,7 @@ struct NonprofitView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
+                // MARK: - Image and title
                 if let imageName = nonprofit.imageAssetName {
                     Image(imageName)
                         .resizable()
@@ -38,7 +39,6 @@ struct NonprofitView: View {
                 }
                 
                 VStack(alignment: .leading, spacing: 16) {
-                    // MARK: - Title
                     Text(nonprofit.name)
                         .font(.largeTitle)
                         .fontWeight(.bold)
@@ -65,6 +65,7 @@ struct NonprofitView: View {
                     .buttonStyle(.bordered)
                     .controlSize(.large)
                     
+                    // MARK: - About
                     Text(nonprofit.about)
                     
                     // MARK: - Contact info
