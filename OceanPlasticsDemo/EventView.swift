@@ -19,11 +19,32 @@ struct EventView: View {
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(height: 240)
+                    .clipped()
                 
                 VStack(alignment: .leading, spacing: 16) {
                     Text(event.name)
                         .font(.largeTitle)
                         .fontWeight(.bold)
+                    
+                    // MARK: - Supplementary info
+                    
+                    if let nonprofit = event.nonprofit {
+                        NavigationLink {
+                            NonprofitView(nonprofit: nonprofit)
+                        } label: {
+                            HStack {
+                                VStack(alignment: .leading) {
+                                    Text("Hosted by".uppercased())
+                                        .font(.caption)
+                                        .fontWeight(.medium)
+                                        .foregroundStyle(.secondary)
+                                    Text(nonprofit.name)
+                                }
+                                Spacer()
+                            }
+                        }
+                        .tint(.primary)
+                    }
                     
                     Button(action: {
                         UIApplication.shared.open(event.externalSignupLink)
