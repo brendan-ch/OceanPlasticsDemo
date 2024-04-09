@@ -14,6 +14,8 @@ struct NonprofitView: View {
     
     let nonprofit: Nonprofit
     
+    @State private var mailingAddressCopied = false
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
@@ -65,13 +67,31 @@ struct NonprofitView: View {
                     VStack(alignment: .leading) {
                         Button(action: {
                             UIPasteboard.general.string = nonprofit.mailingAddress
+                            
+                            if !mailingAddressCopied {
+                                withAnimation {
+                                    mailingAddressCopied = true
+                                }
+                                
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                                    withAnimation {
+                                        mailingAddressCopied = false
+                                    }
+                                }
+                            }
                         }) {
                             HStack {
-                                Image(systemName: "doc.on.doc.fill")
-                                Text("Copy mailing address")
+                                if mailingAddressCopied {
+                                    Image(systemName: "checkmark")
+                                    Text("Copied!")
+                                } else {
+                                    Image(systemName: "doc.on.doc.fill")
+                                    Text("Copy mailing address")
+                                }
                             }
                         }
                         .buttonStyle(.bordered)
+                        .buttonBorderShape(.capsule)
                         
                         ForEach(nonprofit.externalResources, id: \.link) { externalResource in
                             Button(action: {
@@ -83,6 +103,7 @@ struct NonprofitView: View {
                                 }
                             }
                             .buttonStyle(.bordered)
+                            .buttonBorderShape(.capsule)
                         }
                     }
                 }
