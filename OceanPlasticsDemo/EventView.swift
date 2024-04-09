@@ -29,18 +29,29 @@ struct EventView: View {
                         UIApplication.shared.open(event.externalSignupLink)
                     }) {
                         HStack {
+                            Spacer()
+                            
                             Image(systemName: "arrow.up.right")
                             
                             if let baseURL = event.externalSignupLink.baseURL {
                                 Text("Sign up on \(baseURL.absoluteString)")
+                                    .fontWeight(.medium)
                             } else {
                                 Text("Sign up")
+                                    .fontWeight(.medium)
                             }
+                            
+                            Spacer()
                         }
+                        
                     }
+                    .buttonStyle(.borderedProminent)
+                    .controlSize(.large)
                 }
+                .padding()
             }
         }
+        .ignoresSafeArea(edges: .top)
     }
 }
 
