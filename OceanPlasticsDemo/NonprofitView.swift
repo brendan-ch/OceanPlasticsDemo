@@ -11,10 +11,20 @@ import SwiftData
 
 struct NonprofitView: View {
     @Environment(\.modelContext) var modelContext
+    @Query var events: [Event]
+    
+    @State private var mailingAddressCopied = false
     
     let nonprofit: Nonprofit
     
-    @State private var mailingAddressCopied = false
+    init(nonprofit: Nonprofit) {
+        self.nonprofit = nonprofit
+        let id = nonprofit.persistentModelID
+        
+        _events = Query(filter: #Predicate<Event> { event in
+            event.nonprofit?.persistentModelID == id
+        }, sort: \Event.date)
+    }
     
     var body: some View {
         ScrollView {
@@ -108,10 +118,32 @@ struct NonprofitView: View {
                     }
                 }
                 .padding()
+                
+                // MARK: - Upcoming Events
+                ForEach(events) { event in
+                    // Hack to hide the disclosure indicator displayed by NavigationLink by default
+                    ZStack {
+                        NavigationLink {
+                            EventView()
+                        } label: {
+                            CardView(caption: event.nonprofit?.name ?? "", title: event.name, description: event.date.formatted()) {
+                                Image(event.imageAssetName)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(height: 200)
+                                    .clipShape(RoundedRectangle(cornerRadius: 4.0))
+                                    .clipped()
+                            }
+                        }
+                        .tint(.primary)
+                        
+                    }
+                    .listRowInsets(EdgeInsets())
+                }
+                .listRowSeparator(.hidden)
             }
         }
-        .toolbarBackground(.hidden)
-        .ignoresSafeArea()
+        .ignoresSafeArea(edges: .top)
     }
 }
 
@@ -126,5 +158,5 @@ struct NonprofitView: View {
     let nonprofit = Nonprofit(name: "Test Nonprofit", following: true, about: "The Surfrider Foundation USA is a U.S. 501 grassroots non-profit environmental organization that works to protect and preserve the world's oceans, waves and beaches. It focuses on water quality, beach access, beach and surf spot preservation, and sustaining marine and coastal ecosystems. (Wikipedia)", externalResources: externalResources, mailingAddress: "1 University Drive, Orange, CA", imageAssetName: "surfrider")
     
     return NonprofitView(nonprofit: nonprofit)
-        .modelContainer(container)
+        .modelContainer(PlaceholderDataController.previewContainer)
 }

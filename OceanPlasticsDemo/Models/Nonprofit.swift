@@ -57,7 +57,7 @@ class Nonprofit {
         self.mailingAddress = mailingAddress
     }
     
-    init(events: [Event] = [Event](), name: String, following: Bool, about: String, externalResources: [ExternalResource], mailingAddress: String, imageAssetName: String) {
+    init(events: [Event] = [Event](), name: String, following: Bool, about: String, externalResources: [ExternalResource], mailingAddress: String, imageAssetName: String) {        
         self.events = events
         self.name = name
         self.following = following
