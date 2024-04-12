@@ -57,6 +57,8 @@ struct EventView: View {
                         Spacer()
                     }
                     
+                    // MARK: - Call to actions
+                    
                     Button(action: {
                         UIApplication.shared.open(event.externalSignupLink)
                     }) {
@@ -79,6 +81,41 @@ struct EventView: View {
                     }
                     .buttonStyle(.borderedProminent)
                     .controlSize(.large)
+                    
+                    HStack {
+                        Button {
+                            event.bookmarked.toggle()
+                        } label: {
+                            HStack {
+                                Spacer()
+                                if event.bookmarked {
+                                    Image(systemName: "bookmark.fill")
+                                    Text("Remove")
+                                } else {
+                                    Image(systemName: "bookmark")
+                                    Text("Save")
+                                }
+                                Spacer()
+                            }
+                        }
+                        .buttonStyle(.bordered)
+                        .controlSize(.large)
+                        
+                        Button {
+//                            event.bookmarked.toggle()
+                        } label: {
+                            HStack {
+                                Spacer()
+                                Image(systemName: "calendar")
+                                Text("Add Event")
+                                Spacer()
+                            }
+
+                        }
+                        .buttonStyle(.bordered)
+                        .controlSize(.large)
+                        
+                    }
                 }
                 .padding()
             }
