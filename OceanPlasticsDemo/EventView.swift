@@ -118,6 +118,7 @@ struct EventView: View {
                             }
                             .buttonStyle(.bordered)
                             .controlSize(.large)
+                            .disabled(true)
                         }
                     }
                 }
