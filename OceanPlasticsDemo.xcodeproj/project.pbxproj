@@ -16,7 +16,6 @@
 		209081F72BA8B9B300441F30 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 209081F62BA8B9B300441F30 /* Preview Assets.xcassets */; };
 		209081FE2BA8BBEC00441F30 /* TabbedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209081FD2BA8BBEC00441F30 /* TabbedView.swift */; };
 		209082002BA8BD4400441F30 /* UpcomingEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209081FF2BA8BD4400441F30 /* UpcomingEventsView.swift */; };
-		209082022BA8BD8700441F30 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209082012BA8BD8700441F30 /* AccountView.swift */; };
 		209082042BA8BE0400441F30 /* NonprofitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209082032BA8BE0400441F30 /* NonprofitView.swift */; };
 		209082062BA8BE3800441F30 /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209082052BA8BE3800441F30 /* EventView.swift */; };
 		209082082BA8BEB300441F30 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209082072BA8BEB300441F30 /* CardView.swift */; };
@@ -33,7 +32,6 @@
 		209081F62BA8B9B300441F30 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		209081FD2BA8BBEC00441F30 /* TabbedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbedView.swift; sourceTree = "<group>"; };
 		209081FF2BA8BD4400441F30 /* UpcomingEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingEventsView.swift; sourceTree = "<group>"; };
-		209082012BA8BD8700441F30 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		209082032BA8BE0400441F30 /* NonprofitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonprofitView.swift; sourceTree = "<group>"; };
 		209082052BA8BE3800441F30 /* EventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
 		209082072BA8BEB300441F30 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
@@ -85,7 +83,6 @@
 				209081F52BA8B9B300441F30 /* Preview Content */,
 				209081FD2BA8BBEC00441F30 /* TabbedView.swift */,
 				209081FF2BA8BD4400441F30 /* UpcomingEventsView.swift */,
-				209082012BA8BD8700441F30 /* AccountView.swift */,
 				209082032BA8BE0400441F30 /* NonprofitView.swift */,
 				209082052BA8BE3800441F30 /* EventView.swift */,
 				209082072BA8BEB300441F30 /* CardView.swift */,
@@ -181,7 +178,6 @@
 				209081EE2BA8B9B200441F30 /* OceanPlasticsDemoApp.swift in Sources */,
 				209082042BA8BE0400441F30 /* NonprofitView.swift in Sources */,
 				209082082BA8BEB300441F30 /* CardView.swift in Sources */,
-				209082022BA8BD8700441F30 /* AccountView.swift in Sources */,
 				2040B5F12BA8CE0E00BFF794 /* Nonprofit.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

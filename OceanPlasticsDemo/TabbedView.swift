@@ -26,13 +26,6 @@ struct TabbedView: View {
                 .tabItem {
                     Label("Events", systemImage: "calendar.day.timeline.left")
                 }
-            
-            NavigationStack {
-                AccountView()
-            }
-                .tabItem {
-                    Label("Account", systemImage: "person.crop.circle")
-                }
                 
         }
     }
