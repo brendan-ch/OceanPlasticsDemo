@@ -144,6 +144,7 @@ struct EventView: View {
                 .padding()
         }
         .navigationBarTitleDisplayMode(.inline)
+        .toolbarBackground(.automatic, for: .navigationBar)
         .ignoresSafeArea(edges: .top)
     }
 }
