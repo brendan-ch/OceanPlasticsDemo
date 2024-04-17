@@ -45,7 +45,7 @@ class PlaceholderDataController {
         dockweiler.nonprofit = surfrider
         
         // Create an event on May 5th, 2024 at 9:00 AM PST
-        let balboa = Event(name: "Balboa Beach Cleanup", imageAssetName: "balboa", date: Date(timeIntervalSince1970: TimeInterval(1714924800)), externalSignupLink: URL(string: "https://surfrider.com")!, bookmarked: false, about: "Join us at our annual Balboa Beach Cleanup! Located on the beautiful Balboa Peninsula, this event takes place over 2.5 miles of beach. Food and amenities will be provided, or stop by any of the local businesses along the peninsula!", latitude: nil, longitude: nil)
+        let balboa = Event(name: "Balboa Beach Cleanup", imageAssetName: "balboa", date: Date(timeIntervalSince1970: TimeInterval(1714924800)), externalSignupLink: URL(string: "https://surfrider.com")!, bookmarked: false, about: "Join us at our annual Balboa Beach Cleanup! Located on the beautiful Balboa Peninsula, this event takes place over 2.5 miles of beach. Food and amenities will be provided, or stop by any of the local businesses along the peninsula!", latitude: 33.603251, longitude: -117.910470)
         balboa.nonprofit = surfrider
         
         container.mainContext.insert(dockweiler)
