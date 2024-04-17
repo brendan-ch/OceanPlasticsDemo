@@ -12,8 +12,6 @@ import MapKit
 struct EventView: View {
     var event: Event
     
-    @Namespace var mapScope
-    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
@@ -23,128 +21,129 @@ struct EventView: View {
                     .aspectRatio(contentMode: .fill)
                     .frame(height: 240)
                     .clipped()
+            }
                 
-                VStack(alignment: .leading, spacing: 16) {
-                    Text(event.name)
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
-                    
-                    // MARK: - Supplementary info
-                    
-                    if let nonprofit = event.nonprofit {
-                        NavigationLink {
-                            NonprofitView(nonprofit: nonprofit)
-                        } label: {
-                            HStack {
-                                VStack(alignment: .leading) {
-                                    Text("Hosted by".uppercased())
-                                        .font(.caption)
-                                        .fontWeight(.medium)
-                                        .foregroundStyle(.secondary)
-                                    Text(nonprofit.name)
-                                }
-                                Spacer()
+            VStack(alignment: .leading, spacing: 16) {
+                Text(event.name)
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                
+                // MARK: - Supplementary info
+                
+                if let nonprofit = event.nonprofit {
+                    NavigationLink {
+                        NonprofitView(nonprofit: nonprofit)
+                    } label: {
+                        HStack {
+                            VStack(alignment: .leading) {
+                                Text("Hosted by".uppercased())
+                                    .font(.caption)
+                                    .fontWeight(.medium)
+                                    .foregroundStyle(.secondary)
+                                Text(nonprofit.name)
                             }
+                            Spacer()
                         }
-                        .tint(.primary)
                     }
+                    .tint(.primary)
+                }
+                    
+                HStack {
+                    VStack(alignment: .leading) {
+                        Text("On".uppercased())
+                            .font(.caption)
+                            .fontWeight(.medium)
+                            .foregroundStyle(.secondary)
+                        Text(event.date.formatted())
+                    }
+                    Spacer()
+                }
+                    
+                // MARK: - Call to actions
+                
+                VStack(alignment: .leading, spacing: 8) {
+                    Button(action: {
+                        UIApplication.shared.open(event.externalSignupLink)
+                    }) {
+                        HStack {
+                            Spacer()
+                            
+                            Image(systemName: "arrow.up.right")
+                            
+                            if let host = event.externalSignupLink.host() {
+                                Text("Sign up on \(host)")
+                                    .fontWeight(.medium)
+                            } else {
+                                Text("Sign up")
+                                    .fontWeight(.medium)
+                            }
+                            
+                            Spacer()
+                        }
+                        
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .controlSize(.large)
                     
                     HStack {
-                        VStack(alignment: .leading) {
-                            Text("On".uppercased())
-                                .font(.caption)
-                                .fontWeight(.medium)
-                                .foregroundStyle(.secondary)
-                            Text(event.date.formatted())
-                        }
-                        Spacer()
-                    }
-                    
-                    // MARK: - Call to actions
-                    
-                    VStack(alignment: .leading, spacing: 8) {
-                        Button(action: {
-                            UIApplication.shared.open(event.externalSignupLink)
-                        }) {
+                        Button {
+                            event.bookmarked.toggle()
+                        } label: {
                             HStack {
                                 Spacer()
-                                
-                                Image(systemName: "arrow.up.right")
-                                
-                                if let host = event.externalSignupLink.host() {
-                                    Text("Sign up on \(host)")
-                                        .fontWeight(.medium)
+                                if event.bookmarked {
+                                    Image(systemName: "bookmark.fill")
+                                    Text("Remove")
                                 } else {
-                                    Text("Sign up")
-                                        .fontWeight(.medium)
+                                    Image(systemName: "bookmark")
+                                    Text("Save")
                                 }
-                                
                                 Spacer()
                             }
-                            
                         }
-                        .buttonStyle(.borderedProminent)
+                        .buttonStyle(.bordered)
                         .controlSize(.large)
                         
-                        HStack {
-                            Button {
-                                event.bookmarked.toggle()
-                            } label: {
-                                HStack {
-                                    Spacer()
-                                    if event.bookmarked {
-                                        Image(systemName: "bookmark.fill")
-                                        Text("Remove")
-                                    } else {
-                                        Image(systemName: "bookmark")
-                                        Text("Save")
-                                    }
-                                    Spacer()
-                                }
+                        Button {
+                            // TODO: add to calendar logic
+                        } label: {
+                            HStack {
+                                Spacer()
+                                Image(systemName: "calendar")
+                                Text("Add Event")
+                                Spacer()
                             }
-                            .buttonStyle(.bordered)
-                            .controlSize(.large)
-                            
-                            Button {
-                                // TODO: add to calendar logic
-                            } label: {
-                                HStack {
-                                    Spacer()
-                                    Image(systemName: "calendar")
-                                    Text("Add Event")
-                                    Spacer()
-                                }
 
-                            }
-                            .buttonStyle(.bordered)
-                            .controlSize(.large)
-                            .disabled(true)
                         }
+                        .buttonStyle(.bordered)
+                        .controlSize(.large)
+                        .disabled(true)
                     }
                 }
-                .padding()
+            }
+            .padding()
                 
-                VStack(alignment: .leading, spacing: 16) {
-                    VStack(alignment: .leading) {
-                        Text("About this event")
-                            .font(.headline)
-                        
-                        Text(event.about)
-                    }
+            VStack(alignment: .leading, spacing: 16) {
+                VStack(alignment: .leading) {
+                    Text("About this event")
+                        .font(.headline)
+                    
+                    Text(event.about)
+                }
+                    
+                    // MARK: - Map
                     
                     if let lat = event.latitude, let long = event.longitude {
                         Map(initialPosition: .region(MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: lat, longitude: long), latitudinalMeters: 10000, longitudinalMeters: 10000))) {
                             Marker(event.name, coordinate: CLLocationCoordinate2D(latitude: lat, longitude: long))
                         }
                         .frame(height: 300)
-                        .clipShape(RoundedRectangle(cornerSize: /*@START_MENU_TOKEN@*/CGSize(width: 20, height: 10)/*@END_MENU_TOKEN@*/))
+                        .clipShape(RoundedRectangle(cornerSize: CGSize(width: 20, height: 10)))
                     }
                 }
                 .padding()
-                
-                // MARK: - Map
-            }
         }
+        .navigationBarTitleDisplayMode(.inline)
         .ignoresSafeArea(edges: .top)
     }
 }
