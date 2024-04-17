@@ -134,11 +134,26 @@ struct EventView: View {
                     // MARK: - Map
                     
                     if let lat = event.latitude, let long = event.longitude {
-                        Map(initialPosition: .region(MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: lat, longitude: long), latitudinalMeters: 10000, longitudinalMeters: 10000))) {
-                            Marker(event.name, coordinate: CLLocationCoordinate2D(latitude: lat, longitude: long))
+                        ZStack {
+                            RoundedRectangle(cornerSize: CGSize(width: 20, height: 20))
+                            .frame(height: 300)
+                            .onTapGesture {
+                                // Open the coordinates in Apple Maps
+                                
+                                let placemark = MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: lat, longitude: long))
+                                
+                                let mapItem = MKMapItem(placemark: placemark)
+                                mapItem.openInMaps()
+                            }
+                            
+                            Map(initialPosition: .region(MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: lat, longitude: long), latitudinalMeters: 10000, longitudinalMeters: 10000))) {
+                                Marker(event.name, coordinate: CLLocationCoordinate2D(latitude: lat, longitude: long))
+                            }
+                            .frame(height: 300)
+                            .clipShape(RoundedRectangle(cornerSize: CGSize(width: 20, height: 20)))
+                            .allowsHitTesting(false)
                         }
-                        .frame(height: 300)
-                        .clipShape(RoundedRectangle(cornerSize: CGSize(width: 20, height: 10)))
+                        
                     }
                 }
                 .padding()
