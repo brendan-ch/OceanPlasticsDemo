@@ -102,7 +102,7 @@ struct EventView: View {
                         .controlSize(.large)
                         
                         Button {
-//                            event.bookmarked.toggle()
+                            // TODO: add to calendar logic
                         } label: {
                             HStack {
                                 Spacer()
@@ -114,8 +114,15 @@ struct EventView: View {
                         }
                         .buttonStyle(.bordered)
                         .controlSize(.large)
-                        
                     }
+                }
+                .padding()
+                
+                VStack(alignment: .leading) {
+                    Text("About this event")
+                        .font(.headline)
+                    
+                    Text(event.about)
                 }
                 .padding()
             }
