@@ -62,83 +62,86 @@ struct EventView: View {
                     
                     // MARK: - Call to actions
                     
-                    Button(action: {
-                        UIApplication.shared.open(event.externalSignupLink)
-                    }) {
-                        HStack {
-                            Spacer()
-                            
-                            Image(systemName: "arrow.up.right")
-                            
-                            if let baseURL = event.externalSignupLink.baseURL {
-                                Text("Sign up on \(baseURL.absoluteString)")
-                                    .fontWeight(.medium)
-                            } else {
-                                Text("Sign up")
-                                    .fontWeight(.medium)
-                            }
-                            
-                            Spacer()
-                        }
-                        
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .controlSize(.large)
-                    
-                    HStack {
-                        Button {
-                            event.bookmarked.toggle()
-                        } label: {
+                    VStack(alignment: .leading, spacing: 8) {
+                        Button(action: {
+                            UIApplication.shared.open(event.externalSignupLink)
+                        }) {
                             HStack {
                                 Spacer()
-                                if event.bookmarked {
-                                    Image(systemName: "bookmark.fill")
-                                    Text("Remove")
+                                
+                                Image(systemName: "arrow.up.right")
+                                
+                                if let host = event.externalSignupLink.host() {
+                                    Text("Sign up on \(host)")
+                                        .fontWeight(.medium)
                                 } else {
-                                    Image(systemName: "bookmark")
-                                    Text("Save")
+                                    Text("Sign up")
+                                        .fontWeight(.medium)
                                 }
+                                
                                 Spacer()
                             }
+                            
                         }
-                        .buttonStyle(.bordered)
+                        .buttonStyle(.borderedProminent)
                         .controlSize(.large)
                         
-                        Button {
-                            // TODO: add to calendar logic
-                        } label: {
-                            HStack {
-                                Spacer()
-                                Image(systemName: "calendar")
-                                Text("Add Event")
-                                Spacer()
+                        HStack {
+                            Button {
+                                event.bookmarked.toggle()
+                            } label: {
+                                HStack {
+                                    Spacer()
+                                    if event.bookmarked {
+                                        Image(systemName: "bookmark.fill")
+                                        Text("Remove")
+                                    } else {
+                                        Image(systemName: "bookmark")
+                                        Text("Save")
+                                    }
+                                    Spacer()
+                                }
                             }
+                            .buttonStyle(.bordered)
+                            .controlSize(.large)
+                            
+                            Button {
+                                // TODO: add to calendar logic
+                            } label: {
+                                HStack {
+                                    Spacer()
+                                    Image(systemName: "calendar")
+                                    Text("Add Event")
+                                    Spacer()
+                                }
 
+                            }
+                            .buttonStyle(.bordered)
+                            .controlSize(.large)
                         }
-                        .buttonStyle(.bordered)
-                        .controlSize(.large)
                     }
                 }
                 .padding()
                 
-                VStack(alignment: .leading) {
-                    Text("About this event")
-                        .font(.headline)
+                VStack(alignment: .leading, spacing: 16) {
+                    VStack(alignment: .leading) {
+                        Text("About this event")
+                            .font(.headline)
+                        
+                        Text(event.about)
+                    }
                     
-                    Text(event.about)
+                    if let lat = event.latitude, let long = event.longitude {
+                        Map(initialPosition: .region(MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: lat, longitude: long), latitudinalMeters: 10000, longitudinalMeters: 10000))) {
+                            Marker(event.name, coordinate: CLLocationCoordinate2D(latitude: lat, longitude: long))
+                        }
+                        .frame(height: 300)
+                        .clipShape(RoundedRectangle(cornerSize: /*@START_MENU_TOKEN@*/CGSize(width: 20, height: 10)/*@END_MENU_TOKEN@*/))
+                    }
                 }
                 .padding()
                 
                 // MARK: - Map
-                
-                if let lat = event.latitude, let long = event.longitude {
-                    Map(initialPosition: .region(MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: lat, longitude: long), latitudinalMeters: 10000, longitudinalMeters: 10000))) {
-                        Marker(event.name, coordinate: CLLocationCoordinate2D(latitude: lat, longitude: long))
-                    }
-                    .frame(height: 300)
-                    .clipShape(RoundedRectangle(cornerSize: /*@START_MENU_TOKEN@*/CGSize(width: 20, height: 10)/*@END_MENU_TOKEN@*/))
-                    .padding()
-                }
             }
         }
         .ignoresSafeArea(edges: .top)
