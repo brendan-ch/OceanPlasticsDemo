@@ -28,124 +28,127 @@ struct NonprofitView: View {
     }
     
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading) {
-                // MARK: - Image and title
-                if let imageName = nonprofit.imageAssetName {
-                    Image(imageName)
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(height: 240)
-                }
-                
-                VStack(alignment: .leading, spacing: 16) {
-                    Text(nonprofit.name)
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
-                    
-                    Button(action: {
-                        nonprofit.following.toggle()
-                    }) {
-                        HStack {
-                            Spacer()
-                            
-                            if !nonprofit.following {
-                                Image(systemName: "plus")
-                                Text("Follow")
-                                    .fontWeight(.medium)
-                            } else {
-                                Image(systemName: "multiply")
-                                Text("Unfollow")
-                                    .fontWeight(.medium)
-                            }
-                            
-                            Spacer()
-                        }
-                    }
-                    .buttonStyle(.bordered)
-                    .controlSize(.large)
-                    
-                    // MARK: - About
-                    Text(nonprofit.about)
-                    
-                    // MARK: - Contact info
-                    
-                    VStack(alignment: .leading, spacing: 0) {
-                        Text("Mailing address")
-                            .font(.headline)
-                        Text(nonprofit.mailingAddress)
+        GeometryReader { content in
+            ScrollView {
+                VStack(alignment: .leading) {
+                    // MARK: - Image and title
+                    if let imageName = nonprofit.imageAssetName {
+                        Image(imageName)
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: content.size.width, height: 240)
+                            .clipped()
                     }
                     
-                    VStack(alignment: .leading) {
+                    VStack(alignment: .leading, spacing: 16) {
+                        Text(nonprofit.name)
+                            .font(.largeTitle)
+                            .fontWeight(.bold)
+                        
                         Button(action: {
-                            UIPasteboard.general.string = nonprofit.mailingAddress
-                            
-                            if !mailingAddressCopied {
-                                withAnimation {
-                                    mailingAddressCopied = true
-                                }
-                                
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                                    withAnimation {
-                                        mailingAddressCopied = false
-                                    }
-                                }
-                            }
+                            nonprofit.following.toggle()
                         }) {
                             HStack {
-                                if mailingAddressCopied {
-                                    Image(systemName: "checkmark")
-                                    Text("Copied!")
+                                Spacer()
+                                
+                                if !nonprofit.following {
+                                    Image(systemName: "plus")
+                                    Text("Follow")
+                                        .fontWeight(.medium)
                                 } else {
-                                    Image(systemName: "doc.on.doc.fill")
-                                    Text("Copy mailing address")
+                                    Image(systemName: "multiply")
+                                    Text("Unfollow")
+                                        .fontWeight(.medium)
                                 }
+                                
+                                Spacer()
                             }
                         }
                         .buttonStyle(.bordered)
-                        .buttonBorderShape(.capsule)
+                        .controlSize(.large)
                         
-                        ForEach(nonprofit.externalResources, id: \.link) { externalResource in
+                        // MARK: - About
+                        Text(nonprofit.about)
+                        
+                        // MARK: - Contact info
+                        
+                        VStack(alignment: .leading, spacing: 0) {
+                            Text("Mailing address")
+                                .font(.headline)
+                            Text(nonprofit.mailingAddress)
+                        }
+                        
+                        VStack(alignment: .leading) {
                             Button(action: {
-                                UIApplication.shared.open(externalResource.link)
+                                UIPasteboard.general.string = nonprofit.mailingAddress
+                                
+                                if !mailingAddressCopied {
+                                    withAnimation {
+                                        mailingAddressCopied = true
+                                    }
+                                    
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                                        withAnimation {
+                                            mailingAddressCopied = false
+                                        }
+                                    }
+                                }
                             }) {
                                 HStack {
-                                    Image(systemName: externalResource.systemImageName)
-                                    Text(externalResource.name)
+                                    if mailingAddressCopied {
+                                        Image(systemName: "checkmark")
+                                        Text("Copied!")
+                                    } else {
+                                        Image(systemName: "doc.on.doc.fill")
+                                        Text("Copy mailing address")
+                                    }
                                 }
                             }
                             .buttonStyle(.bordered)
                             .buttonBorderShape(.capsule)
-                        }
-                    }
-                }
-                .padding()
-                
-                // MARK: - Upcoming Events
-                ForEach(events) { event in
-                    // Hack to hide the disclosure indicator displayed by NavigationLink by default
-                    ZStack {
-                        NavigationLink {
-                            EventView(event: event)
-                        } label: {
-                            CardView(caption: event.nonprofit?.name ?? "", title: event.name, description: event.date.formatted()) {
-                                Image(event.imageAssetName)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(height: 200)
-                                    .clipShape(RoundedRectangle(cornerRadius: 4.0))
-                                    .clipped()
+                            
+                            ForEach(nonprofit.externalResources, id: \.link) { externalResource in
+                                Button(action: {
+                                    UIApplication.shared.open(externalResource.link)
+                                }) {
+                                    HStack {
+                                        Image(systemName: externalResource.systemImageName)
+                                        Text(externalResource.name)
+                                    }
+                                }
+                                .buttonStyle(.bordered)
+                                .buttonBorderShape(.capsule)
                             }
                         }
-                        .tint(.primary)
-                        
                     }
-                    .listRowInsets(EdgeInsets())
+                    .padding()
+                    
+                    // MARK: - Upcoming Events
+                    ForEach(events) { event in
+                        // Hack to hide the disclosure indicator displayed by NavigationLink by default
+                        ZStack {
+                            NavigationLink {
+                                EventView(event: event)
+                            } label: {
+                                CardView(caption: event.nonprofit?.name ?? "", title: event.name, description: event.date.formatted()) {
+                                    Image(event.imageAssetName)
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(height: 200)
+                                        .clipShape(RoundedRectangle(cornerRadius: 4.0))
+                                        .clipped()
+                                }
+                            }
+                            .tint(.primary)
+                            
+                        }
+                        .listRowInsets(EdgeInsets())
+                    }
+                    .listRowSeparator(.hidden)
                 }
-                .listRowSeparator(.hidden)
             }
+            .ignoresSafeArea(edges: .top)
         }
-        .ignoresSafeArea(edges: .top)
     }
 }
 
@@ -157,7 +160,7 @@ struct NonprofitView: View {
         ExternalResource(name: "Website", systemImageName: "arrow.up.right", link: URL(string: "https://surfrider.com")!)
     ]
     
-    let nonprofit = Nonprofit(name: "Test Nonprofit", following: true, about: "The Surfrider Foundation USA is a U.S. 501 grassroots non-profit environmental organization that works to protect and preserve the world's oceans, waves and beaches. It focuses on water quality, beach access, beach and surf spot preservation, and sustaining marine and coastal ecosystems. (Wikipedia)", externalResources: externalResources, mailingAddress: "1 University Drive, Orange, CA", imageAssetName: "surfrider")
+    let nonprofit = Nonprofit(name: "Test Nonprofit", following: true, about: "The Surfrider Foundation USA is a U.S. 501 grassroots non-profit environmental organization that works to protect and preserve the world's oceans, waves and beaches. It focuses on water quality, beach access, beach and surf spot preservation, and sustaining marine and coastal ecosystems. (Wikipedia)", externalResources: externalResources, mailingAddress: "1 University Drive, Orange, CA", imageAssetName: "coastkeeper")
     
     return NonprofitView(nonprofit: nonprofit)
         .modelContainer(PlaceholderDataController.previewContainer)
