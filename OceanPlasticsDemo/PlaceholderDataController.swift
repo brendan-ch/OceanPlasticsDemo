@@ -56,7 +56,7 @@ class PlaceholderDataController {
         let balboa = Event(name: "Balboa Beach Cleanup", imageAssetName: "balboa", date: Date(timeIntervalSince1970: TimeInterval(1714924800)), externalSignupLink: URL(string: "https://surfrider.org")!, bookmarked: false, about: "Join us at our annual Balboa Beach Cleanup! Located on the beautiful Balboa Peninsula, this event takes place over 2.5 miles of beach. Food and amenities will be provided, or stop by any of the local businesses along the peninsula!", latitude: 33.603251, longitude: -117.910470)
         balboa.nonprofit = surfrider
         
-        let huntington = Event(name: "Huntington Beach Cleanup", imageAssetName: "balboa", date: Date(timeIntervalSince1970: TimeInterval(1713110400)), externalSignupLink: URL(string: "https://coastkeeper.org/cleanup-oc/")!, bookmarked: false, about: "Join coastal cleanup day! Every May, coast keepers host 40+ simultaneous trash cleanups. Join us on May 11, 9:00-11:00AM at Pier 9 in Huntington State Beach.", latitude: 33.938803, longitude: -118.440685)
+        let huntington = Event(name: "Huntington Beach Cleanup", imageAssetName: "huntington", date: Date(timeIntervalSince1970: TimeInterval(1715443200)), externalSignupLink: URL(string: "https://coastkeeper.org/cleanup-oc/")!, bookmarked: false, about: "Join coastal cleanup day! Every May, coast keepers host 40+ simultaneous trash cleanups. Join us at Pier 9 in Huntington State Beach.", latitude: 33.638454, longitude: -117.975011)
         
         huntington.nonprofit = coastkeeper
         
