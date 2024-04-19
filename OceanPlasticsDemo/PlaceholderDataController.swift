@@ -44,7 +44,7 @@ class PlaceholderDataController {
             ExternalResource(name: "Website", systemImageName: "arrow.up.right", link: URL(string: "https://coastkeeper.org")!)
         ]
         
-        let coastkeeper = Nonprofit(name: "Coastkeeper", following: true, about: "Our mission is to protect the region’s water resources so they are swimmable, drinkable and fishable for present and future generations. (Orange County Coastkeeper)", externalResources: coastkeeperExternalResources, mailingAddress: "3151 Airway Ave F#110, Costa Mesa, CA 92626", imageAssetName: "coastkeeper")
+        let coastkeeper = Nonprofit(name: "Orange County Coastkeeper", following: true, about: "Our mission is to protect the region’s water resources so they are swimmable, drinkable and fishable for present and future generations. (Orange County Coastkeeper)", externalResources: coastkeeperExternalResources, mailingAddress: "3151 Airway Ave F#110, Costa Mesa, CA 92626", imageAssetName: "coastkeeper")
         
         container.mainContext.insert(coastkeeper)
         
